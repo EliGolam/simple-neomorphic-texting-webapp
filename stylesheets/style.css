@@ -23,6 +23,9 @@ body {
     display: flex;
 }
 
+.cursor-click {
+    cursor: pointer;
+}
 
 .app-container {
     /* Shape */
@@ -62,7 +65,7 @@ body {
     gap: 1em;
 
     /* Aesthetic */
-    background-color: var(--clr-neo-light);
+    background-color: var(--clr-white);
 }
 
 .profile-picture {
@@ -160,10 +163,32 @@ main {
     max-width: 70%;
 }
 
-.last-message {
+.message-preview {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;  
+}
+
+.message {
+    min-width: 30ch;
+    width: 45%;
+    max-width: 60ch;
+
+    background-color: var(--clr-neo-light);
+    overflow-wrap: break-word;
+
+    padding: 1rem;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: var(--clr-contrast);
+    border-radius: 1.4rem 1.4rem .2em 1.4rem;
+}
+
+.message.received {
+    border-radius: 1.4rem 1.4rem 1.4rem .2em;
+    background-color: var(--clr-neo-accent);
 }
 /*#endregion BLOCKS: component specific rules */
 /* --------------------------------------------------------------------------------- */
@@ -180,8 +205,8 @@ main {
 
         /* Aesthetic */
         box-shadow: 
-            -7px -7px 20px var(--clr-neo-light),
-            8px 8px 20px var(--clr-neo-shadow);
+            -7px -7px 20px 2px var(--clr-neo-light),
+            8px 8px 20px 2px var(--clr-neo-shadow);
             /* inset -3px -3px 5px var(--clr-neo-light), 
             inset 3px 3px 5px var(--clr-neo-shadow); */
     }

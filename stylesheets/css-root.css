@@ -2,15 +2,15 @@
 /* These are some generic design choices for colour schemes, fonts, gutters and gaps */
 :root {
     /* Color Schemes */
-    --clr-primary: hsl(180, 29%, 92%);
-    --clr-neo-shadow: hsla(206, 32%, 34%, 0.56);
-    --clr-neo-light: hsla(30, 100%, 98%, 0.9);
-    --clr-neo-accent: hsla(34, 100%, 59%, 0.912);
+    --clr-primary: hsl(180, 41%, 93%);
+    --clr-neo-shadow: hsla(205, 32%, 48%, 0.3);
+    --clr-neo-light: hsla(30, 100%, 97%, 0.8);
+    --clr-neo-accent: hsla(34, 100%, 59%, 0.9);
   
-    --clr-dark-grey: hsl(0, 0%, 16%);
+    --clr-contrast: hsl(180, 88%, 81%);
     --clr-grey: #808080;
     --clr-light-grey: #D2D2D2;
-    --clr-white: #FDFDFD;
+    --clr-white: hsla(30, 100%, 98%, 0.9);
 
     /* FONT */
     --fontfamily-default: 'Roboto', Helvetica, Arial, sans-serif;

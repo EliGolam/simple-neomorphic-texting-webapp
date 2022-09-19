@@ -83,16 +83,9 @@ const app = new Vue({
 
             return messageTime[1].slice(0, -3);
         }, 
-
-        messageAlign(message) {
-            return message.status === 'sent' ? 'ms_message-sent' : 'ms_message-received';
-        }, 
-
+        
         messageProperties (message, index) {
-            const classes = [this.messageAlign(message)];
-            if(this.isLastMessage(index)) {
-                classes.push('anchor');
-            }
+            const classes = [message.status];
 
             return classes;
         }

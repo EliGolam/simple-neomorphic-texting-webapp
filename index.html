@@ -75,7 +75,7 @@
 
                 <h3 class="visually-hidden">List of contacts</h3>
                 <!-- Contacts -->
-                <ul class="contacts-container scroll-container flex">
+                <ul class="contacts-container scroll-container cursor-click flex">
                     <li
                         v-for="(person, index) in contacts"
                         class="contact-wrapper"
@@ -99,7 +99,7 @@
 
                             <div class="contact-body">
                                 <h4>{{ person.name }}</h4>
-                                <p class="last-message">{{ getLastMessage(person) }}</p>
+                                <p class="message-preview">{{ getLastMessage(person) }}</p>
                             </div>
 
                         </article>
@@ -114,10 +114,10 @@
             <section id="chat" class="chat-section app-section flex">
                 <header class="contact-info flex">
                     <div class="profile-picture">
-                        <img class="img-fluid" src="./assets/img/avatar_io.jpg" alt="My Profile Picture">
+                        <img class="img-fluid" :src="getActiveChat('img')" :alt="getActiveChat('alt')" />
                     </div>
 
-                    <h2>Person</h2>
+                    <h2>{{ getActiveChat('name') }}</h2>
 
                     <div class="section-header_options">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -126,9 +126,13 @@
                     </div>
                 </header>
 
-                <div class="messages-container scroll-container">
-                    <div class="message-wrapper">
-                        <p>Sample Text</p>
+                <div class="messages-container scroll-container flex">
+                    <div 
+                        v-for="(messageData, index) in getActiveChat('messages')"
+                        class="message"
+                        :class="messageProperties(messageData, index)"
+                    >
+                        <p>{{ messageData.message }}</p>
                     </div>
                 </div>
 
