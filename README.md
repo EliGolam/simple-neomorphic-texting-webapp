@@ -1,4 +1,5 @@
-# html-css-personal-reset
+# Simple Neo-Morphic Texting App
 
+## VERSIONS
 
-A template to start a basic website. 
+### 0.1 Functional Setup

@@ -2,41 +2,195 @@
 /*#region GENERAL DEFAULTS  */
 body {
     font: var(--fontweight-default) var(--fontsize-default) var(--fontfamily-default);
-    columns: var(--clr-dark-grey);
+    color: var(--clr-dark-grey);
+
+    background-color: var(--clr-primary);
+
+    height: 100vh;
+    overflow: hidden;
+
+    /* Flex Container */
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.6rem;
 }
 /*#endregion GENERAL DEFAULTS  */
 /* --------------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------------- */
 /*#region UTILITIES */ 
-/* ------------------------------------------ */
-/*#region aesthetic elements */
-.flow > * + * {
-    margin-top: var(--flow-spacing);
+.flex {
+    display: flex;
 }
-/*#endregion aesthetic elements */
 
+
+.app-container {
+    /* Shape */
+    width: 100%;
+    height: 100%;
+
+    /* Flex Container */
+    column-gap: .4rem;
+}
+
+.app-section {
+    /* Flex Container */
+    flex-direction: column;
+}
+
+.app-section > * {
+    
+    /* Content */
+    padding: .3rem .8rem;
+}
+
+.scroll-container {
+    /* Flex Item */
+    flex-grow: 1;
+
+    /* Flex Container */
+    flex-direction: column;
+    gap: .7em;
+
+    /* Content */
+    overflow-y: scroll;
+}
+
+.contact-info {
+    /* Flex container */
+    align-items: center;
+    gap: 1em;
+
+    /* Aesthetic */
+    background-color: var(--clr-neo-light);
+}
+
+.profile-picture {
+    /* Shape */
+    max-width: 60px;
+    min-width: 60px;
+    border-radius: 100vh;
+
+    overflow: hidden;
+}
+
+.img-fluid {
+    width: 100%;
+}
+
+.section-header_options {
+    margin-left: auto;
+}
+
+
+.app-input {
+    /* Shape */
+    width: 100%;
+    border: transparent;
+    border-radius: 1em;
+
+    /* Content */
+    padding: .7rem .2rem;
+    text-align: center;
+}
 /*#endregion UTILITIES */
 /* --------------------------------------------------------------------------------- */
 
 
 /* --------------------------------------------------------------------------------- */
 /*#region COMPOSITION */
+main {
+    /* Flex Item */
+    flex-grow: 1;
 
+    /* Shape */
+    width: 100%;
+    overflow: hidden;
+
+    /* Aesthetic */
+    border: 5px solid var(--clr-primary);
+
+    /* Positioning */
+    margin: 0 auto;
+}
+
+.send-text {
+    /* Content */
+    padding: .7rem 1rem;
+    text-align: start;
+}
 /*#endregion COMPOSITION */
 /* --------------------------------------------------------------------------------- */
 
 
 /* --------------------------------------------------------------------------------- */
 /*#region BLOCKS: component specific rules */
+.contact-section {
+    /* Shape */
+    width: 33%;
+    min-width: 250px;
+}
+
+.contact {
+    padding: .3rem .8rem;
+}
+
+.contact.active {
+    background-color: var(--clr-neo-accent);
+    border-radius: 1em;
+}
+
+.contacts-container {
+    padding: 0;
+    padding-right: .3em;
+    border-radius: 1.5em 0 0 0;
+}
+
+.chat-section {
+    flex-grow: 1;
+}
+
+
+.messages-container {
+    background-image: url('../assets/img/mine.jpg');
+}
+
+.contact-body {
+    flex-grow: 1;
+    max-width: 70%;
+}
+
+.last-message {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+}
 /*#endregion BLOCKS: component specific rules */
 /* --------------------------------------------------------------------------------- */
 
 
 /* --------------------------------------------------------------------------------- */
 /*#region MEDIA QUERIES */
-/* @media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 992px) {
+    main {
+        /* Shape */
+        width: 70%;
+        margin-bottom: 1.5em;
+        border-radius: 1.5rem;
 
-} */
+        /* Aesthetic */
+        box-shadow: 
+            -7px -7px 20px var(--clr-neo-light),
+            8px 8px 20px var(--clr-neo-shadow);
+            /* inset -3px -3px 5px var(--clr-neo-light), 
+            inset 3px 3px 5px var(--clr-neo-shadow); */
+    }
+}
 /*#endregion MEDIA QUERIES */
+/* --------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------- */
+/*#region DEBUG */
+
+/*#endregion DEBUG */
 /* --------------------------------------------------------------------------------- */
