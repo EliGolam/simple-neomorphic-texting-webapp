@@ -70,6 +70,8 @@
                 <form action="#" class="search-form app-form flex">
                     <input type="text" placeholder="Search or Create new Chat"
                         class="search-contacts app-input"
+                        v-model="searchBox"
+                        @keyUp="searchChat()"
                     />
                 </form>
 
@@ -80,7 +82,7 @@
                     <li
                         v-for="(person, index) in contacts"
                         class="contact-wrapper"
-                        
+                        v-show="person.visible"
                     >
                         <article 
                             class="contact contact-info flex"
@@ -131,7 +133,7 @@
                     </div>
                 </header>
 
-                <div class="messages-container scroll-container flex">
+                <div class="messages-body scroll-container flex">
                     <div 
                         v-for="(messageData, index) in getActiveChat('messages')"
                         class="message"
@@ -142,9 +144,11 @@
                 </div>
 
                 <footer>
-                    <form action="#" class="text-form app-form flex">
+                    <form action="#" class="text-form app-form flex" @submit.prevent>
                         <input type="text" placeholder="Send Text"
+                            v-model="textBox"
                             class="send-text app-input"
+                            @keyUp.enter="sendText()"
                         />
                     </form>
                 </footer>

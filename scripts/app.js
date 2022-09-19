@@ -11,6 +11,7 @@ const app = new Vue({
         // App Variables
         activeChat: 0,
         textBox: '',
+        searchBox: '',
     },
 
     // METHODS
@@ -41,13 +42,20 @@ const app = new Vue({
             let activeContact = this.contacts[this.activeChat];
 
             activeContact.messages.push(new Message(text, 'sent'));
+            const messageBody = document.querySelector('.messages-body');
+            messageBody.lastElementChild.scrollIntoView();
 
             setTimeout(this.receiveText, 1000, activeContact);
+
+            
         },
         
         receiveText (contact) {
             const text = 'Ok!';
             contact.messages.push(new Message(text, 'received'));
+
+            const messageBody = document.querySelector('.messages-body');
+            messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
         },
 
         isLastMessage(index) {
@@ -91,6 +99,28 @@ const app = new Vue({
             const classes = [message.status];
 
             return classes;
+        }, 
+
+        searchChat() {
+            console.log(this.searchBox);
+            console.log(this.searchBox.length);
+
+            if (this.searchBox.length <= 0) {
+                this.contacts.forEach(contact => {
+                    contact.visible = true;
+                });
+                return;
+            }
+
+            this.contacts.forEach(contact => {
+                if(contact.name.slice(0, this.searchBox.length).toLowerCase() !== this.searchBox.toLowerCase()) {
+                    contact.visible = false;
+                } else {
+                    contact.visible = true;
+                }
+            });
+
+            console.log('DEBUG - contacts', this.contacts);
         }
     },
 

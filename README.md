@@ -2,6 +2,8 @@
 
 ## VERSIONS
 
+### 0.4: Added Search Chat function
+
 ### 0.3: Added Vue App
 
 ### 0.2: Styling Completed

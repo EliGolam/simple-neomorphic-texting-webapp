@@ -177,7 +177,9 @@ main {
 
 
 /*#region chat-section Block */
-.messages-container {
+.messages-body{
+    padding: 2rem 1rem 5rem 1rem;
+
     background-image: url('../assets/img/mine.jpg');
 }
 
