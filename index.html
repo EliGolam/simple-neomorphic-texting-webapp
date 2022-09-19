@@ -76,6 +76,7 @@
                 <h3 class="visually-hidden">List of contacts</h3>
                 <!-- Contacts -->
                 <ul class="contacts-container scroll-container cursor-click flex">
+
                     <li
                         v-for="(person, index) in contacts"
                         class="contact-wrapper"
@@ -99,11 +100,15 @@
 
                             <div class="contact-body">
                                 <h4>{{ person.name }}</h4>
-                                <p class="message-preview">{{ getLastMessage(person) }}</p>
+                                <p class="message-preview">{{ getPreviewMessage(person) }}</p>
                             </div>
 
+                            <div class="preview-time">
+                                <p>{{ getLastMessageTime(person) }}</p>
+                            </div>
                         </article>
                     </li>
+                    
                 </ul>
             </section>
             <!--#endregion contact-list -->

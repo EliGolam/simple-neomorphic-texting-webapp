@@ -5,10 +5,11 @@ const app = new Vue({
     el: '#app',
 
     data: {
+        // Data for data.js
         contacts: contactsData,
-        
-        activeChat: 0,
 
+        // App Variables
+        activeChat: 0,
         textBox: '',
     },
 
@@ -54,16 +55,8 @@ const app = new Vue({
             return index === messages.length - 1 ? true : false;
         },
 
-        // DOM utilities
-        getProfilePicturePath(contact) {
-            return PROF_IMG_PATH + PROF_IMG_PREFIX + contact.avatar + PROF_IMG_FORMAT;
-        }, 
 
-        getProfilePictureAlt(contact) {
-            return `Profile Picture of ${contact.name}`;
-        }, 
-
-        getLastMessage(contact) {
+        getPreviewMessage(contact) {
             let messageAmount = contact.messages.length;
             let sender = contact.messages[messageAmount - 1].status === 'sent' ? 'You: ' : '';
             let previewMessage = contact.messages[messageAmount - 1].message;
@@ -78,18 +71,28 @@ const app = new Vue({
             return this.getMessageTime(contact, messageAmount - 1); 
         }, 
 
+
+        // DOM utilities
+        getProfilePicturePath(contact) {
+            return PROF_IMG_PATH + PROF_IMG_PREFIX + contact.avatar + PROF_IMG_FORMAT;
+        }, 
+
+        getProfilePictureAlt(contact) {
+            return `Profile Picture of ${contact.name}`;
+        }, 
+
         getMessageTime(contact, messageIdx) {
             let messageTime = contact.messages[messageIdx].date.split(' ');
 
             return messageTime[1].slice(0, -3);
         }, 
-        
+
         messageProperties (message, index) {
             const classes = [message.status];
 
             return classes;
         }
-     },
+    },
 
     // MOUNTED
     mounted () {
