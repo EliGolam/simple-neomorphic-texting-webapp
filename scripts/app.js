@@ -1,6 +1,12 @@
 // Initial Handshake
 console.log('SCRIPT - app.js: Loaded!');
 
+contactsData.forEach(contact => {
+    contact.messages.forEach(message => {
+        message.options = false;
+    });
+});
+
 const app = new Vue({
     el: '#app',
 
@@ -12,6 +18,7 @@ const app = new Vue({
         activeChat: 0,
         textBox: '',
         searchBox: '',
+        activeOption: undefined,
     },
 
     // METHODS
@@ -42,20 +49,15 @@ const app = new Vue({
             let activeContact = this.contacts[this.activeChat];
 
             activeContact.messages.push(new Message(text, 'sent'));
-            const messageBody = document.querySelector('.messages-body');
-            messageBody.lastElementChild.scrollIntoView();
 
             setTimeout(this.receiveText, 1000, activeContact);
-
-            
+            this.moveChatToBottom();
         },
         
         receiveText (contact) {
             const text = 'Ok!';
             contact.messages.push(new Message(text, 'received'));
-
-            const messageBody = document.querySelector('.messages-body');
-            messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+            this.moveChatToBottom();
         },
 
         isLastMessage(index) {
@@ -88,6 +90,15 @@ const app = new Vue({
             activeContact.messages.splice(index, 1);
         },
 
+        showOptions(element) {
+            if (this.activeOption !== undefined) {
+                if(this.activeOption !== element) {
+                    this.activeOption.options = false;
+                }
+            }
+            this.activeOption = element;
+            this.activeOption.options = !element.options;
+        },
 
         // DOM utilities
         getProfilePicturePath(contact) {
@@ -130,7 +141,14 @@ const app = new Vue({
             });
 
             console.log('DEBUG - contacts', this.contacts);
-        }
+        },
+
+        moveChatToBottom() {
+            setTimeout(() => {
+                const messageBody = document.querySelector('.messages-body');
+                messageBody.lastElementChild.scrollIntoView();
+            }, 0);
+        }, 
     },
 
     // MOUNTED
@@ -140,3 +158,4 @@ const app = new Vue({
 });
 
 console.log('DEBUG - app: ', app);
+

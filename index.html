@@ -19,6 +19,11 @@
     <!--#endregion FONTS -->
 
     <!--#region Stylesheets and Scripts -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
     <!-- VueJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.10/vue.min.js" integrity="sha512-H8u5mlZT1FD7MRlnUsODppkKyk+VEiCmncej8yZW1k/wUT90OQon0F9DSf/2Qh+7L/5UHd+xTLrMszjHEZc2BA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
 
@@ -116,7 +121,6 @@
             <!--#endregion contact-list -->
 
 
-
             <!--#region chat -->
             <section id="chat" class="chat-section app-section flex">
                 <header class="contact-info flex">
@@ -140,17 +144,20 @@
                         :class="messageProperties(messageData, index)"
                     >
                         <p>{{ messageData.message }}</p>
-                        <div class="message-open-options cursor-click">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </div>
 
-                        
-                        <ul class="message-options">
-                            <li
+                        <div class="dropdown message-open-options cursor-click">
+                            <button class="btn bg-transparent border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#"
                                 @click="removeMessage(index)"
                             >
-                            Delete Message</li>
-                        </ul>
+                                Delete Message
+                            </a></li>
+
+                            </ul>
+                        </div>
     
                     </div>
                 </div>
