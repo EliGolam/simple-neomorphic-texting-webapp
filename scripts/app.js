@@ -66,6 +66,8 @@ const app = new Vue({
 
         getPreviewMessage(contact) {
             let messageAmount = contact.messages.length;
+            if (messageAmount === 0) return '';
+
             let sender = contact.messages[messageAmount - 1].status === 'sent' ? 'You: ' : '';
             let previewMessage = contact.messages[messageAmount - 1].message;
 
@@ -76,8 +78,15 @@ const app = new Vue({
 
         getLastMessageTime(contact) {
             let messageAmount = contact.messages.length;
+            if (messageAmount === 0) return '';
             return this.getMessageTime(contact, messageAmount - 1); 
         }, 
+
+        removeMessage(index) {
+            let activeContact = this.contacts[this.activeChat];
+
+            activeContact.messages.splice(index, 1);
+        },
 
 
         // DOM utilities

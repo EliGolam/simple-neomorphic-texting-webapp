@@ -2,6 +2,8 @@
 
 ## VERSIONS
 
+### 0.5: Added Delete Button
+
 ### 0.4: Added Search Chat function
 
 ### 0.3: Added Vue App

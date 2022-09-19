@@ -192,7 +192,9 @@ main {
     background-color: var(--clr-neo-light);
     overflow-wrap: break-word;
 
-    padding: 1rem;
+    padding: 1.2rem 1rem;
+
+    position: relative;
 }
 
 .message.sent {
@@ -206,6 +208,27 @@ main {
     background-color: var(--clr-neo-accent);
 }
 
+.message-open-options {
+    position: absolute;
+    top: .5rem;
+    right: .8rem; 
+
+    opacity: 0;
+}
+
+.message:hover .message-open-options {
+    opacity: 1;
+}
+
+.message-options {
+    position: absolute;
+        bottom: -.9rem;
+        right: .8rem;
+        z-index: 2;
+
+    background-color: var(--clr-white);
+    padding: .3em;
+}
 
 .send-text {
     /* Content */

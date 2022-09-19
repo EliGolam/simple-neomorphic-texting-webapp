@@ -140,6 +140,18 @@
                         :class="messageProperties(messageData, index)"
                     >
                         <p>{{ messageData.message }}</p>
+                        <div class="message-open-options cursor-click">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+
+                        
+                        <ul class="message-options">
+                            <li
+                                @click="removeMessage(index)"
+                            >
+                            Delete Message</li>
+                        </ul>
+    
                     </div>
                 </div>
 
